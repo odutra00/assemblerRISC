@@ -16,14 +16,14 @@ O objetivo deste assembler é facilitar a codificação e a execução das instr
 
 ## Instruções de Carregamento e Armazenamento
 
-| Instruction Name               | Mnemonic | Format | Encoding (10)                    |
-|--------------------------------|----------|--------|----------------------------------|
-| Tamanho em Bits                | -        |   -    | 6        | 5  | 5  | 16          |
-| Load Word                      | LW       | I      | Grupo+32 | rs | rt | offset      | R[rt]=M[R[rs]+SignExtImm] |
-| Store Word                     | SW       | I      | Grupo+33 | rs | rt | offset      | M[R[rs]+SignExtImm]=R[rt]  |
-| Branch on Not Equal            | BNE      | I      | Grupo+34 | rs | rt | offset      | if(R[rs] != R[rt]) PC = PC + 4 + offset |
-| Add Immediate                  | ADDI     | I      | Grupo+35 | rs | rt | offset      | R[rt]=R[rs]+SignExtImm |
-| Or Immediate                   | ORI      | I      | Grupo+36 | rs | rt | offset      | R[rt]=R[rs] | SignExtImm|
+| Instruction Name               | Mnemonic | Format | Encoding (10)                    |                                           |
+|--------------------------------|----------|--------|----------------------------------|-------------------------------------------|
+| Tamanho em Bits                | -        |   -    | 6        | 5  | 5  | 16          |                                           |
+| Load Word                      | LW       | I      | Grupo+32 | rs | rt | offset      | R[rt]=M[R[rs]+SignExtImm]                 |
+| Store Word                     | SW       | I      | Grupo+33 | rs | rt | offset      | M[R[rs]+SignExtImm]=R[rt]                 |
+| Branch on Not Equal            | BNE      | I      | Grupo+34 | rs | rt | offset      | if(R[rs] != R[rt]) PC = PC + 4 + offset   |
+| Add Immediate                  | ADDI     | I      | Grupo+35 | rs | rt | offset      | R[rt]=R[rs]+SignExtImm                    |
+| Or Immediate                   | ORI      | I      | Grupo+36 | rs | rt | offset      | R[rt]=R[rs] or SignExtImm                  |
 
 
 ## Instruções R
