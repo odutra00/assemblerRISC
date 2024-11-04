@@ -16,44 +16,37 @@ O objetivo deste assembler é facilitar a codificação e a execução das instr
 
 ## Instruções de Carregamento e Armazenamento
 
-| Instruction Name               | Mnemonic | Format | Encoding (10)                   |
+| Instruction Name               | Mnemonic | Format | Encoding (10)                    |
 |--------------------------------|----------|--------|----------------------------------|
-| Tamanho em Bits                |          |        | 6 | 5 | 5 | 16                   |
-| Load Word                      | LW       | I      | (Grupo+32)                       |
-|                                |          |        | rs | rt | offset               |
-|                                |          |        | R[rt]=M[R[rs]+SignExtImm]       |
-| Store Word                     | SW       | I      | (Grupo+33)                       |
-|                                |          |        | rs | rt | offset               |
-|                                |          |        | M[R[rs]+SignExtImm]=R[rt]       |
-| Branch on Not Equal            | BNE      | I      | (Grupo+34)                       |
-|                                |          |        | rs | rt | offset               |
-|                                |          |        | if(R[rs] != R[rt]) PC = PC + 4 + offset |
-| Add Immediate                  | ADDI     | I      | (Grupo+35)                       |
-|                                |          |        | rs | rt | offset               |
-|                                |          |        | R[rt]=R[rs]+SignExtImm           |
-| Or Immediate                   | ORI      | I      | (Grupo+36)                       |
-|                                |          |        | rs | rt | offset               |
-|                                |          |        | R[rt]=R[rs] | SignExtImm        |
+| Tamanho em Bits                |          |        | 6        | 5  | 5  | 16          |
+| Load Word                      | LW       | I      | Grupo+32 | rs | rt | offset      | R[rt]=M[R[rs]+SignExtImm] |
+| Store Word                     | SW       | I      | Grupo+33 | rs | rt | offset      | M[R[rs]+SignExtImm]=R[rt]  |
+| Branch on Not Equal            | BNE      | I      | Grupo+34 | rs | rt | offset      | if(R[rs] != R[rt]) PC = PC + 4 + offset |
+| Add Immediate                  | ADDI     | I      | Grupo+35 | rs | rt | offset      | R[rt]=R[rs]+SignExtImm |
+| Or Immediate                   | ORI      | I      | Grupo+36 | rs | rt | offset      | R[rt]=R[rs] | SignExtImm|
+
 
 ## Instruções R
 
 | Mnemonic      | Format | Encoding (10) | Tamanho em Bits |
 |---------------|--------|----------------|------------------|
 | Tamanho em Bits | 6 | 5 | 5 | 5 | 5 | 6 |
-| Add           | ADD    | R      | Grupo+10        | 32               |
-| Subtract      | SUB    | R      | Grupo+10        | 34               |
-| Multiplication | MUL   | R      | Grupo+10        | 50               |
-| And           | AND    | R      | Grupo+10        | 36               |
-| Or            | OR     | R      | Grupo+10        | 37               |
+|                |        | Grupo+10       |                  |
+| Add           | ADD    | R      | 32             |
+| Subtract      | SUB    | R      | 34             |
+| Multiplication | MUL   | R      | 50             |
+| And           | AND    | R      | 36             |
+| Or            | OR     | R      | 37             |
 
 ## Instruções de Salto
 
 | Instruction Name               | Mnemonic | Format | Encoding (10) | Tamanho em Bits |
 |--------------------------------|----------|--------|----------------|------------------|
-| Tamanho em Bits                | 6 | 26             |                   |
-| Jump                           | JMP      | J      | 2              |                  |
-|                                |          |        | JumpADDR       |                  |
-|                                |          |        | PC = JumpADDR  |                  |
+| Tamanho em Bits                | 6 | 26             |                  |
+| Jump                           | JMP      | J      | 2              |
+|                                |          |        | JumpADDR       |
+|                                |          |        | PC = JumpADDR  |
+
 
 
 ## Funcionalidades
