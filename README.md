@@ -8,6 +8,9 @@ Utilize o guia do trabalho em que a arquitetura e o ISA são apresentados.
 
 O objetivo deste assembler é facilitar a codificação e a execução das instruções da arquitetura RISC definida para o curso. Ele permite que os usuários escrevam código em uma linguagem de montagem simplificada, que será convertida em código binário compreensível pela máquina.
 
+O formato de codificação do assembly pode ser entendido através dos comentários no programa proposto no roteiro do trabalho (prog_avaliacao.hex).
+Linhas vazias ou comentadas codificarão a instrução NOP em que os 32 bits da instrução são 0.
+
 ## Funcionalidades
 
 - **Codificação de Instruções**: Suporte para as instruções especificadas no ISA.
