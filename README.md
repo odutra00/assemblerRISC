@@ -181,7 +181,7 @@ O objetivo deste assembler é facilitar a codificação e a execução das instr
       <th>Instruction Name</th>
       <th>Mnemonic</th>
       <th>Format</th>
-      <th style="width: 200px;">Encoding (10)</th>
+      <th style="width: 400px;">Encoding (10)</th>
       <th>Meaning</th>
     </tr>
   </thead>
