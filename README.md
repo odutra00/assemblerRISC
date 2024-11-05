@@ -16,7 +16,7 @@ O objetivo deste assembler é facilitar a codificação e a execução das instr
 
 ## Instruções de Carregamento e Armazenamento
 
-| Instruction Name               | Mnemonic | Format | Encoding (10)                    |                                           |
+| Instruction Name               | Mnemonic | Format | Encoding (10)                    | Meaning                                   |
 |--------------------------------|----------|--------|----------------------------------|-------------------------------------------|
 | Tamanho em Bits                | -        |   -    | 6        | 5  | 5  | 16          |                                           |
 | Load Word                      | LW       | I      | Grupo+32 | rs | rt | offset      | R[rt]=M[R[rs]+SignExtImm]                 |
@@ -28,26 +28,213 @@ O objetivo deste assembler é facilitar a codificação e a execução das instr
 
 ## Instruções R
 
-| Mnemonic      | Format | Encoding (10) | Tamanho em Bits |
-|---------------|--------|----------------|------------------|
-| Tamanho em Bits | 6 | 5 | 5 | 5 | 5 | 6 |
-|                |        | Grupo+10       |                  |
-| Add           | ADD    | R      | 32             |
-| Subtract      | SUB    | R      | 34             |
-| Multiplication | MUL   | R      | 50             |
-| And           | AND    | R      | 36             |
-| Or            | OR     | R      | 37             |
+| Instruction Name  | Mnemonic  |     Format    | Encoding (10)                      | Meaning                              |
+|-------------------|-----------|----------------------------------------------------|--------------------------------------|
+| Tamanho em Bits   |   -             -         | 6         | 5  | 5  | 5  | 5  | 6  |          -                           |
+| Addition          | ADD       | R             | Grupo+10  | rs | rt | rd | 10 | 32 | R[rd]=R[rs]+R[rt]                    |
+| Subtract          | SUB       | R             | Grupo+10  | rs | rt | rd | 10 | 34 | R[rd]=R[rs]-R[rt]                    |
+| Multiplication    | MUL       | R             | Grupo+10  | rs | rt | rd | 10 | 50 | R[rd] = lowerHW_R[rs] * lowerHW_R[rt]|    
+| And               | AND       | R             | Grupo+10  | rs | rt | rd | 10 | 36 | R[rd]=R[rs]&R[rt]                    |
+| Or                | OR        | R             | Grupo+10  | rs | rt | rd | 10 | 37 | R[rd]=R[rs]|R[rt]                    |
 
 ## Instruções de Salto
 
-| Instruction Name               | Mnemonic | Format | Encoding (10) | Tamanho em Bits |
-|--------------------------------|----------|--------|----------------|------------------|
-| Tamanho em Bits                | 6 | 26             |                  |
-| Jump                           | JMP      | J      | 2              |
-|                                |          |        | JumpADDR       |
-|                                |          |        | PC = JumpADDR  |
+| Instruction Name               | Mnemonic | Format    | Encoding (10) | Meaning           |
+|--------------------------------|----------|-----------|---------------|-------------------|
+| Tamanho em Bits                     -          -      | 6 |       26  |        -          | 
+| Jump                           | JMP      | J         | 2 | JumpADDR  |  PC = JumpADDR    |
+
+## Special Instruction
+
+| Instruction Name               | Mnemonic | Format    | Encoding (10) | Meaning           |
+|--------------------------------|----------|-----------|---------------|-------------------|
+| Tamanho em Bits                     -          -      |    32         |        -          | 
+| No Operation                   |          |    -      |     0         | No operation      |
+
 
 -->
+
+
+<h2>Tabela de Instruções</h2>
+
+<h3>Instruções de Carregamento e Armazenamento</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instruction Name</th>
+      <th>Mnemonic</th>
+      <th>Format</th>
+      <th>Encoding (10)</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tamanho em Bits</td>
+      <td>-</td>
+      <td>-</td>
+      <td>6 | 5 | 5 | 16</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Load Word</td>
+      <td>LW</td>
+      <td>I</td>
+      <td>Grupo+32 | rs | rt | offset</td>
+      <td>R[rt]=M[R[rs]+SignExtImm]</td>
+    </tr>
+    <tr>
+      <td>Store Word</td>
+      <td>SW</td>
+      <td>I</td>
+      <td>Grupo+33 | rs | rt | offset</td>
+      <td>M[R[rs]+SignExtImm]=R[rt]</td>
+    </tr>
+    <tr>
+      <td>Branch on Not Equal</td>
+      <td>BNE</td>
+      <td>I</td>
+      <td>Grupo+34 | rs | rt | offset</td>
+      <td>if(R[rs] != R[rt]) PC = PC + 4 + offset</td>
+    </tr>
+    <tr>
+      <td>Add Immediate</td>
+      <td>ADDI</td>
+      <td>I</td>
+      <td>Grupo+35 | rs | rt | offset</td>
+      <td>R[rt]=R[rs]+SignExtImm</td>
+    </tr>
+    <tr>
+      <td>Or Immediate</td>
+      <td>ORI</td>
+      <td>I</td>
+      <td>Grupo+36 | rs | rt | offset</td>
+      <td>R[rt]=R[rs] or SignExtImm</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Instruções R</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instruction Name</th>
+      <th>Mnemonic</th>
+      <th>Format</th>
+      <th>Encoding (10)</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tamanho em Bits</td>
+      <td>-</td>
+      <td>-</td>
+      <td>6 | 5 | 5 | 5 | 5 | 6</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Addition</td>
+      <td>ADD</td>
+      <td>R</td>
+      <td>Grupo+10 | rs | rt | rd | 10 | 32</td>
+      <td>R[rd]=R[rs]+R[rt]</td>
+    </tr>
+    <tr>
+      <td>Subtract</td>
+      <td>SUB</td>
+      <td>R</td>
+      <td>Grupo+10 | rs | rt | rd | 10 | 34</td>
+      <td>R[rd]=R[rs]-R[rt]</td>
+    </tr>
+    <tr>
+      <td>Multiplication</td>
+      <td>MUL</td>
+      <td>R</td>
+      <td>Grupo+10 | rs | rt | rd | 10 | 50</td>
+      <td>R[rd] = lowerHW_R[rs] * lowerHW_R[rt]</td>
+    </tr>
+    <tr>
+      <td>And</td>
+      <td>AND</td>
+      <td>R</td>
+      <td>Grupo+10 | rs | rt | rd | 10 | 36</td>
+      <td>R[rd]=R[rs]&R[rt]</td>
+    </tr>
+    <tr>
+      <td>Or</td>
+      <td>OR</td>
+      <td>R</td>
+      <td>Grupo+10 | rs | rt | rd | 10 | 37</td>
+      <td>R[rd]=R[rs]|R[rt]</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Instruções de Salto</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instruction Name</th>
+      <th>Mnemonic</th>
+      <th>Format</th>
+      <th>Encoding (10)</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tamanho em Bits</td>
+      <td>-</td>
+      <td>-</td>
+      <td>6 | 26</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Jump</td>
+      <td>JMP</td>
+      <td>J</td>
+      <td>2 | JumpADDR</td>
+      <td>PC = JumpADDR</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Special Instruction</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instruction Name</th>
+      <th>Mnemonic</th>
+      <th>Format</th>
+      <th>Encoding (10)</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tamanho em Bits</td>
+      <td>-</td>
+      <td>-</td>
+      <td>32</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>No Operation</td>
+      <td>-</td>
+      <td>-</td>
+      <td>0</td>
+      <td>No operation</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
 
 ## Funcionalidades
 
