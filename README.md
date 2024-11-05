@@ -244,7 +244,7 @@ O objetivo deste assembler é facilitar a codificação e a execução das instr
 
 ## Como Usar
 
-1. Escreva seu código de montagem em um  arquivo `xxxxx.asm` (O formato de codificação do assembly pode ser entendido através dos comentários no programa proposto no roteiro do trabalho (prog_avaliacao.hex). Linhas vazias ou comentadas codificarão a instrução NOP em que os 32 bits da instrução são 0. Para esta instrução, tenha cuidado com os sinais de controle a serem gerados no estágio de decodificação. A instrução não pode sobrescrever dados na memória. Ela deve manter o pipeline neutro.
+1. Escreva seu código de montagem em um  arquivo `xxxxx.asm` (O formato de codificação do assembly pode ser entendido através dos comentários no programa proposto no roteiro do trabalho (prog_avaliacao.hex). Linhas vazias ou comentadas codificarão a instrução NOP em que os 32 bits da instrução são 0. Para esta instrução, tenha cuidado com os sinais de controle a serem gerados no estágio de decodificação. A instrução não pode sobrescrever dados na memória / register file. Ela deve manter o pipeline neutro.
 2. Execute o assembler para gerar o arquivo binário correspondente na forma: assembler <input.asm> <grupo> <output.hex>
 3. Carregue o arquivo intel hex na memória de programa de sua arquitetura no momento de fazer a síntese do soft core.
 
