@@ -15,8 +15,8 @@ Loop: 	lw $r1, grupo*0x0250($r31)              ;		r1 ← Mem[i + Número do Grup
         ori $r13, 0x00FF($r0)                   ;       r13 ← 0x00FF (constant to multiply vector sum)
 Loop1: 	lw $r1, grupo*0x0250($r31)              ;       r1 ← Mem[i + Número do Grupo * 0250h] 
 		addi $r31, 1($r31)                      ;		i = i + 1  
-		lw $r17, grupo*0x0250($r31)             ;		lw working as nop for bubble
-		lw $r17, grupo*0x0250($r31)             ;		lw working as nop for bubble
+		                                        ;		NOP as bubble
+		                                        ;		NOP as bubble
 		add $r10, $r1, $r10                     ;		r10 ← r1 + r10 (cumulative sum of nth vector value)
                                                 ;		NOP as bubble
 		                                        ;		NOP as bubble
