@@ -245,9 +245,11 @@ O objetivo deste assembler é facilitar a codificação e a execução das instr
 ## Como Usar
 
 1. Escreva seu código de montagem em um  arquivo `xxxxx.asm` (O formato de codificação do assembly pode ser entendido através dos comentários no programas .as.
-2. O programa que testará a microarquitetura será o: Linhas vazias ou comentadas codificarão a instrução NOP em que os 32 bits da instrução são 0. Para esta instrução, tenha cuidado com os sinais de controle a serem gerados no estágio de decodificação. A instrução não pode sobrescrever dados na memória / register file. Ela deve manter o pipeline neutro.
-3. Execute o assembler para gerar o arquivo binário correspondente na forma: **assembler input.asm grupo output.hex** . O arquivo .asm deve estar tabulado corretamente, com todas as vírgulas de comentários alinhadas, caso contrário poderão ser geradas mensagens de erro ao final da compilação. Se houver qualquer erro após a compilação, não use o arquivo .hex gerado.
-4. Carregue o arquivo intel hex na memória de programa de sua arquitetura no momento de fazer a síntese do soft core.
+2. O programa que testará a microarquitetura será o: prog_avaliacao.asm. Este programa executa a seguinte funcionalidade:
+   (\sum_{i=0}^{n-1} Mem[i + Numero do grupo*CteMemDados(h)]) * 255(d)\end{equation}
+4. Linhas vazias ou comentadas codificarão a instrução NOP em que os 32 bits da instrução são 0. Para esta instrução, tenha cuidado com os sinais de controle a serem gerados no estágio de decodificação. A instrução não pode sobrescrever dados na memória / register file. Ela deve manter o pipeline neutro.
+5. Execute o assembler para gerar o arquivo binário correspondente na forma: **assembler input.asm grupo output.hex** . O arquivo .asm deve estar tabulado corretamente, com todas as vírgulas de comentários alinhadas, caso contrário poderão ser geradas mensagens de erro ao final da compilação. Se houver qualquer erro após a compilação, não use o arquivo .hex gerado.
+6. Carregue o arquivo intel hex na memória de programa de sua arquitetura no momento de fazer a síntese do soft core.
 
 ## Contribuições
 
